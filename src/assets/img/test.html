@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Address Forms</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      h2 {
+        margin-top: 0;
+        color: #ff6600;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      .button-group button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #ff6600;
+        color: white;
+        cursor: pointer;
+      }
+      .button-group button:hover {
+        background-color: #e55a00;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="address-list" class="container">
+      <h2>Địa chỉ của tôi</h2>
+      <div>
+        <p><strong>Châu Nguyễn</strong>: 123 Đường ABC, Quận 1, TP.HCM</p>
+        <p><strong>Châu Nguyễn</strong>: 456 Đường DEF, Quận 3, TP.HCM</p>
+      </div>
+      <div class="button-group">
+        <button onclick="showUpdateForm()">Sửa Địa Chỉ</button>
+        <button onclick="showAddForm()">Thêm Địa Chỉ Mới</button>
+      </div>
+    </div>
+
+    <div id="update-address" class="container hidden">
+      <h2>Cập nhật địa chỉ</h2>
+      <div class="form-group">
+        <label for="name">Tên người nhận</label>
+        <input type="text" id="name" value="Châu Nguyễn" />
+      </div>
+      <div class="form-group">
+        <label for="phone">Số điện thoại</label>
+        <input type="text" id="phone" value="0123456789" />
+      </div>
+      <div class="form-group">
+        <label for="district">Quận/Huyện</label>
+        <select id="district">
+          <option>Quận 1</option>
+          <option>Quận 3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input type="text" id="address" value="123 Đường ABC" />
+      </div>
+      <div class="button-group">
+        <button onclick="showAddressList()">Hủy</button>
+        <button>Lưu Cập Nhật</button>
+      </div>
+    </div>
+
+    <div id="add-address" class="container hidden">
+      <h2>Thêm địa chỉ mới</h2>
+      <div class="form-group">
+        <label for="new-name">Tên người nhận</label>
+        <input type="text" id="new-name" />
+      </div>
+      <div class="form-group">
+        <label for="new-phone">Số điện thoại</label>
+        <input type="text" id="new-phone" />
+      </div>
+      <div class="form-group">
+        <label for="new-district">Quận/Huyện</label>
+        <select id="new-district">
+          <option>Quận 1</option>
+          <option>Quận 3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="new-address">Địa chỉ</label>
+        <input type="text" id="new-address" />
+      </div>
+      <div class="button-group">
+        <button onclick="showAddressList()">Hủy</button>
+        <button>Thêm</button>
+      </div>
+    </div>
+
+    <script>
+      function showAddressList() {
+        document.getElementById("address-list").classList.remove("hidden");
+        document.getElementById("update-address").classList.add("hidden");
+        document.getElementById("add-address").classList.add("hidden");
+      }
+
+      function showUpdateForm() {
+        document.getElementById("address-list").classList.add("hidden");
+        document.getElementById("update-address").classList.remove("hidden");
+        document.getElementById("add-address").classList.add("hidden");
+      }
+
+      function showAddForm() {
+        document.getElementById("address-list").classList.add("hidden");
+        document.getElementById("update-address").classList.add("hidden");
+        document.getElementById("add-address").classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>
