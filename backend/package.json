@@ -23,6 +23,7 @@
     "nodemailer": "^7.0.10"
   },
   "devDependencies": {
-    "nodemon": "^3.1.2"
+    "nodemon": "^3.1.2",
+    "pptxgenjs": "^4.0.1"
   }
 }
