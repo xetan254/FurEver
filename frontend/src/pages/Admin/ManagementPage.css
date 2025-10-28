@@ -1,0 +1,889 @@
+/* ================================================================ */
+/* ===                  1. STYLE CHUNG CHO CÁC TRANG QUẢN LÝ      === */
+/* ================================================================ */
+
+/* --- Layout chung của trang --- */
+.page-container {
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Header, Search, Actions --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+}
+
+.page-header-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.search-bar {
+    display: flex;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+    height: 48px;
+}
+
+.search-bar input {
+    border: none;
+    padding: 12px 15px;
+    font-size: 1rem;
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.search-bar .search-btn {
+    background-color: #ff5b35;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.action-btn-secondary, .action-btn-primary {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.action-btn-secondary {
+    background-color: #fff;
+    border: 1px solid #E0E0E0;
+    color: #ff5b35;
+}
+
+.action-btn-primary {
+    background-color: #ff5b35;
+    color: white;
+}
+
+/* --- Phân trang (Pagination) --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 8px;
+}
+
+.pagination button {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #58546a;
+    min-width: 40px;
+    height: 40px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.pagination button:hover {
+    border-color: #ff5b35;
+    color: #ff5b35;
+}
+
+.pagination button.active {
+    background-color: #ff5b35;
+    color: white;
+    border-color: #ff5b35;
+}
+
+/* ================================================================ */
+/* ===                  2. STYLE CHUNG CHO CÁC MODAL              === */
+/* ================================================================ */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000; padding: 20px;
+}
+
+.modal-content.new-design {
+    background: white; padding: 40px; border-radius: 20px;
+    width: 90%; max-width: 800px; max-height: 90vh;
+    overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.modal-content.new-design h2 {
+    text-align: center; color: #b53518; font-size: 1.8rem;
+    margin-top: 0; margin-bottom: 30px; font-weight: 700;
+}
+
+.image-preview-wrapper {
+    max-width: 180px;
+    height: 120px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.file-name-display {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+}
+
+/* ================================================================ */
+/* ===          3. STYLE RIÊNG CHO TRANG QUẢN LÝ THÚ CƯNG         === */
+/* ================================================================ */
+.filter-toggle-btn {
+    padding: 12px;
+    background: #FEF6F3;
+    border: 1px solid #ffdad1;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 48px;
+    width: 48px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+.filter-toggle-btn:hover {
+    background-color: #ffeedb;
+}
+.filter-toggle-btn.active {
+    background-color: #ff5b35;
+}
+.filter-toggle-btn.active svg path, .filter-toggle-btn:hover svg path {
+    stroke: #fff;
+}
+
+/* ... (Bạn có thể copy các style cho .filter-form-container, .filter-grid từ file cũ vào đây) ... */
+
+.sorters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    color: #58546a;
+    flex-wrap: wrap;
+}
+.sorters span { font-weight: bold; margin-right: 10px; }
+.sorter-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.sorter-buttons button {
+    padding: 8px 16px; border-radius: 20px; border: 1px solid #ddd;
+    background-color: #fff; cursor: pointer; transition: all 0.2s;
+}
+.sorter-buttons button.active, .sorter-buttons button:hover {
+    background-color: #FEF6F3; border-color: #ff5b35; color: #ff5b35;
+}
+
+.pet-list { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+}
+.pet-card {
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff; 
+    padding: 15px;
+    border-radius: 12px; 
+    border: 1px solid #F0F0F0;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+.pet-card:hover { 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-color: #ffdad1; 
+}
+.pet-card-image { 
+    width: 100%; height: 200px; border-radius: 8px;
+    object-fit: cover; margin-bottom: 15px;
+}
+.pet-info { 
+    flex-grow: 1; 
+    width: 100%;
+}
+.pet-card-info h4 { margin: 0 0 5px; font-size: 1rem; font-weight: 700; }
+.pet-card-info p { margin: 2px 0; font-size: 0.8rem; color: #7b778d; }
+.pet-card-actions {
+    width: 100%; display: flex; justify-content: flex-end; margin-top: 10px;
+    border-top: 1px solid #f0f0f0; padding-top: 10px;
+}
+.pet-card-actions button { 
+    background: none; border: none; cursor: pointer; 
+    font-size: 1.2rem; opacity: 0.6; transition: opacity 0.2s; 
+}
+.pet-card-actions button:hover { opacity: 1; }
+
+/* ================================================================ */
+/* ===           4. STYLE RIÊNG CHO TRANG QUẢN LÝ BÀI VIẾT       === */
+/* ================================================================ */
+.article-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+.article-card {
+    display: flex; align-items: flex-start; background: #fff; padding: 20px;
+    border-radius: 12px; border: 1px solid #F0F0F0;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+.article-card:hover { 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-color: #ffdad1; 
+}
+.article-card-image {
+    width: 150px; height: 100px; border-radius: 8px; object-fit: cover;
+    margin-right: 20px; flex-shrink: 0;
+}
+.article-card-info { flex-grow: 1; }
+.article-card-info h4 { margin: 0 0 8px; font-size: 1.1rem; }
+.article-card-info p { margin: 0; font-size: 0.9rem; color: #7b778d; }
+.article-card-actions { 
+    display: flex; align-items: center; gap: 15px; margin-left: 20px; 
+}
+.article-card-actions button {
+    background: none; border: none; cursor: pointer; font-size: 1.2rem;
+    opacity: 0.6; transition: opacity 0.2s;
+}
+.article-card-actions button:hover { opacity: 1; }
+
+/* ... (Các style cho modal form của article giữ nguyên từ file ArticleManagementPage.css) ... */
+
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: 20px;
+}
+
+.modal-content.new-design {
+  background: white; padding: 40px; border-radius: 20px;
+  width: 90%; max-width: 800px; max-height: 90vh;
+  overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.modal-content.new-design h2 {
+    text-align: center; color: #b53518; font-size: 1.8rem;
+    margin-top: 0; margin-bottom: 30px; font-weight: 700;
+}
+
+.article-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* === GIẢI PHÁP SỬA LỖI BẰNG CSS GRID === */
+
+
+
+.article-form label {
+    display: block; margin-bottom: 10px; font-weight: 600; color: #58546a;
+}
+.article-form input {
+    width: 100%; padding: 12px 15px; border: 1px solid #E0E0E0;
+    border-radius: 8px; font-size: 1rem; font-family: 'Nunito', sans-serif;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.article-form input:focus {
+    outline: none; border-color: #ff5b35;
+    box-shadow: 0 0 0 3px rgba(255, 91, 53, 0.2);
+}
+.am-article-image {
+    width: 150px; height: 100px; border-radius: 8px; object-fit: cover;
+    margin-right: 20px; flex-shrink: 0;
+}
+
+.char-counter {
+    text-align: right; font-size: 0.8rem; color: #999;
+    margin-top: 5px;
+}
+
+/* === STYLE CHO RICH TEXT EDITOR === */
+.rich-text-editor .ql-toolbar {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-color: #E0E0E0;
+}
+.rich-text-editor .ql-container {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-color: #E0E0E0;
+    font-family: 'Nunito', sans-serif;
+}
+.rich-text-editor .ql-editor {
+    min-height: 250px;
+    font-size: 1rem;
+}
+.rich-text-editor.ql-container.ql-snow {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Nút thêm ảnh */
+.btn-add-image {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border: 1px solid #ffdad1;
+    color: #ff5b35;
+    background-color: #FEF6F3;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+.btn-add-image:hover {
+    background-color: #ffeedb;
+}
+.btn-add-image span { color: #b53518; }
+.btn-add-image svg { color: #b53518; }
+
+.file-name-display {
+    margin-left: 15px;
+    font-style: italic;
+    color: #58546a;
+}
+
+/* Các nút Hủy, Đăng tải */
+.modal-actions {
+    display: flex; justify-content: center; gap: 15px; margin-top: 30px;
+}
+.modal-actions .btn-cancel.new-design,
+.modal-actions .btn-save.new-design {
+    padding: 12px 40px; border-radius: 8px; font-weight: bold;
+    font-size: 1rem; cursor: pointer; border: 1px solid #ddd;
+}
+.btn-cancel.new-design { background-color: #fff; color: #58546a; }
+.btn-cancel.new-design:hover { background-color: #f5f5f5; }
+.btn-save.new-design { background-color: #ff5b35; color: white; border-color: #ff5b35; }
+.btn-save.new-design:hover { opacity: 0.9; }
+
+/* Style cho pagination */
+.pm-pagination { 
+    display: flex; justify-content: center; align-items: center; 
+    margin-top: 40px; gap: 8px; 
+}
+.pm-pagination button {
+    border: 1px solid #ddd; background: #fff; color: #58546a;
+    min-width: 40px; height: 40px; padding: 8px 12px; 
+    border-radius: 8px; cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    font-weight: bold; transition: all 0.2s ease-in-out;
+}
+.pm-pagination button:hover { border-color: #ff5b35; color: #ff5b35; }
+.pm-pagination button.active { background-color: #ff5b35; color: white; border-color: #ff5b35; }
+.pm-pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
+.image-preview-wrapper {
+  max-width: 180px;         /* Chiều rộng tối đa cho khung preview */
+  height: 120px;            /* Chiều cao cố định */
+  border: 1px dashed #ccc;  /* Viền đứt để trông đẹp hơn */
+  border-radius: 8px;       /* Bo góc cho mềm mại */
+  overflow: hidden;         /* Ẩn các phần ảnh bị thừa ra ngoài khung */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9; /* Màu nền nhẹ cho khung */
+}
+
+/* Căn chỉnh ảnh nằm trong khung */
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Đây là thuộc tính quan trọng:
+                               - Nó sẽ phóng to hoặc thu nhỏ ảnh để lấp đầy khung.
+                               - Nó tự động cắt các phần ảnh thừa mà không làm méo ảnh. */
+}
+
+/* (Tùy chọn) Style cho tên file hiển thị bên cạnh nút upload */
+.file-name-display {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+}
+
+.filter-form-container {
+    border: 1px solid #ffdad1;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: 130px auto;
+    gap: 20px 25px;
+    align-items: center;
+}
+
+.filter-grid .group-label {
+    grid-column: 1 / 2;
+    font-weight: 600;
+    color: #58546a;
+    font-size: 0.9rem;
+}
+
+.filter-grid .options {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 40px; /* Khoảng cách giữa các cột checkbox */
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: normal;
+    color: #58546a;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none; /* Hỗ trợ Safari */
+    user-select: none;
+    width: 160px; /* Cố định chiều rộng để các ô thẳng hàng */
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.custom-checkbox {
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #E0E0E0;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.checkbox-label:hover input ~ .custom-checkbox {
+    border-color: #ff5b35;
+}
+
+.checkbox-label input:checked ~ .custom-checkbox {
+    background-color: #ff5b35;
+    border-color: #ff5b35;
+}
+
+.custom-checkbox::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-label input:checked ~ .custom-checkbox::after {
+    display: block;
+}
+
+.checkbox-label .custom-checkbox::after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.filter-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.filter-actions button {
+    padding: 10px 40px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-reset {
+    background-color: #fff;
+    color: #58546a;
+    border: 1px solid #E0E0E0;
+}
+
+.btn-reset:hover {
+    background-color: #f5f5f5;
+}
+
+.btn-apply {
+    background-color: #ff5b35;
+    color: white;
+    border: 1px solid #ff5b35;
+}
+
+.btn-apply:hover {
+    opacity: 0.9;
+}
+
+/* Sorters */
+.pm-sorters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    color: #58546a;
+    flex-wrap: wrap;
+}
+.pm-sorters span { font-weight: bold; margin-right: 10px; }
+.sorter-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.sorter-buttons button {
+    padding: 8px 16px; border-radius: 20px; border: 1px solid #ddd;
+    background-color: #fff; cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
+}
+.sorter-buttons button.active, .sorter-buttons button:hover {
+    background-color: #FEF6F3; border-color: #ff5b35; color: #ff5b35;
+}
+
+/* Pet List & Cards */
+.pm-pet-list {
+    display: grid;
+    grid-template-columns: 1fr; /* Mặc định 1 cột cho màn hình nhỏ */
+    gap: 25px;
+}
+
+.pm-pet-card {
+    display: flex;
+    align-items: flex-start; /* Căn các item theo chiều dọc lên trên */
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #F0F0F0;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.pm-pet-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-color: #ffdad1;
+}
+
+.pm-pet-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Bo tròn ảnh */
+    object-fit: cover;
+    flex-shrink: 0; /* Ngăn ảnh bị co lại */
+    margin: 0;
+}
+
+.pm-pet-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Lấp đầy không gian còn lại */
+    gap: 10px; /* Khoảng cách giữa các khối thông tin */
+}
+
+.pm-pet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.pm-pet-header h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.pm-pet-timestamp {
+    font-size: 0.85rem;
+    color: #999;
+    white-space: nowrap;
+    margin-left: 15px;
+}
+
+.pm-pet-details p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #58546a;
+}
+
+.pm-pet-details p strong {
+    font-weight: 600;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.pm-pet-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end; /* Căn khối actions về cuối bên phải */
+    gap: 10px;
+    margin-top: 5px;
+    border: none;
+    padding: 0;
+}
+
+.pm-pet-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: #fff;
+    border: 1px solid #ffdad1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 0;
+    margin: 0;
+}
+
+.pm-pet-actions button:hover {
+    background-color: #FEF6F3;
+}
+
+@media (min-width: 992px) {
+    .pm-pet-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột trên màn hình lớn */
+    }
+}
+
+/* Pagination */
+.pm-pagination { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 40px; 
+    gap: 8px; 
+}
+.pm-pagination button {
+    border: 1px solid #ddd; 
+    background: #fff; 
+    color: #58546a;
+    min-width: 40px; 
+    height: 40px;
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+.pm-pagination button:hover {
+    border-color: #ff5b35;
+    color: #ff5b35;
+}
+.pm-pagination button.active { 
+    background-color: #ff5b35; 
+    color: white; 
+    border-color: #ff5b35; 
+}
+.pm-pagination button:disabled { 
+    opacity: 0.5; 
+    cursor: not-allowed; 
+}
+
+@media (max-width: 1200px) {
+    .pm-pet-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 992px) {
+    .pm-pet-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .pm-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .pm-pet-list {
+        grid-template-columns: 1fr;
+    }
+}
+/* ================================================================ */
+/* ===                  5. RESPONSIVE CHUNG                       === */
+/* ================================================================ */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+/* ================================================================ */
+/* ===                  6. User Table                       === */
+/* ================================================================ */
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.user-table th, .user-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.user-table th {
+    background-color: #FEF6F3;
+    color: #58546a;
+    font-weight: 700;
+}
+
+.user-table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.user-table tbody tr:hover {
+    background-color: #fafafa;
+}
+
+/* --- Style cho Bảng Đơn Hàng --- */
+.order-table th, .order-table td {
+    padding: 12px 15px; /* Giảm padding một chút */
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+}
+
+/* Cột Vật nuôi */
+.pet-column {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px; /* Đặt chiều rộng tối thiểu */
+}
+.pet-image-thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    flex-shrink: 0;
+}
+.pet-info {
+    display: flex;
+    flex-direction: column;
+}
+.pet-info strong {
+    font-weight: 600;
+    color: #333;
+}
+.pet-info .pet-id {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Dropdown Trạng thái */
+.status-dropdown {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    min-width: 130px; /* Đủ rộng */
+}
+/* Màu sắc dựa trên trạng thái */
+.status-dropdown.status-pending {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border-color: #d1d5db;
+}
+.status-dropdown.status-processing {
+    background-color: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+}
+.status-dropdown.status-completed {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+.status-dropdown.status-cancelled {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+/* Cột Thao tác */
+.order-actions {
+    text-align: center;
+}
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: 1px solid #ffdad1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 0;
+    margin: 0;
+}
+.action-button:hover {
+    background-color: #FEF6F3;
+}
+.action-button svg {
+    width: 18px;
+    height: 18px;
+}
+.action-button svg path {
+    stroke: #ff5b35; /* Đảm bảo icon có màu cam */
+}
